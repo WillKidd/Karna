@@ -28,6 +28,10 @@ class _FrameState extends State<Frame> {
             icon: Icon(CupertinoIcons.square),
             label: 'Overview',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.settings),
+            label: 'Settings',
+          ),
         ],
       ),
       tabBuilder: (BuildContext context, int index) {
@@ -66,6 +70,16 @@ class _FrameState extends State<Frame> {
               },
             );
             break;
+          case 3:
+            ret = CupertinoTabView(
+              builder: (context) {
+                return const CustomScrollView(slivers: <Widget>[
+                  CupertinoSliverNavigationBar(
+                    largeTitle: Text("Settings"),
+                  ),
+                ]);
+              },
+            );
         }
         return ret;
       },
