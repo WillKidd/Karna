@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'view/frame.dart';
 
-void main() {
+Future<void> main() async {
+  init();
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -21,4 +23,10 @@ class MyApp extends StatelessWidget {
       home: Frame(),
     );
   }
+}
+
+init() {
+  Hive.initFlutter();
+  Future<Box<dynamic>> system = Hive.openBox('system');
+  Future<Box<dynamic>> user = Hive.openBox('user');
 }
