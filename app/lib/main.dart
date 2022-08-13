@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'view/frame.dart';
 
 Future<void> main() async {
@@ -25,8 +24,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-init() {
-  Hive.initFlutter();
-  Future<Box<dynamic>> system = Hive.openBox('system');
-  Future<Box<dynamic>> user = Hive.openBox('user');
-}
+init() {}
