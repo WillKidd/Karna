@@ -1,16 +1,21 @@
 import 'package:app/model/system.dart';
+import 'package:isar/isar.dart';
 
-import 'workout.dart';
+part 'user.g.dart';
 
+@Collection()
 class User {
+  @Id()
+  int? id = Isar.autoIncrement;
+
   String name;
-  List<Workout> workouts = [];
   int age = 0;
   //all units are saved in metric system
   double weight = 0.0; //kg
   double height = 0.0; //cm
 
   User.onlyName(this.name);
+  User(this.name);
 
   setName(String name) => this.name = name;
   String getName() => name;
@@ -57,8 +62,4 @@ class User {
         return height / 30.48;
     }
   }
-
-  addWorkout(Workout workout) => workouts.add(workout);
-  removeWorkout(Workout workout) => workouts.remove(workout);
-  getWorkouts() => workouts;
 }

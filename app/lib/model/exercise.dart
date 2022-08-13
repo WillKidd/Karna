@@ -1,7 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'system.dart';
+import 'package:isar/isar.dart';
 
+part 'exercise.g.dart';
+
+@Collection()
 class Exercise {
+  @Id()
+  int? id = Isar.autoIncrement;
   String name = "Enter name";
   Image image = Image.asset('assets/images/placeholder.png');
   //all units are saved in metric system

@@ -1,9 +1,21 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/cupertino.dart';
+import 'package:isar/isar.dart';
+
+import '../model/exercise.dart';
+import '../model/system.dart';
+import '../model/user.dart';
+import '../model/workout.dart';
 
 class Frame extends StatefulWidget {
-  const Frame({Key? key}) : super(key: key);
+  const Frame({
+    Key? key,
+    required Future<System?> system,
+    required Future<User?> user,
+    required IsarCollection<Workout> workouts,
+    required IsarCollection<Exercise> exercises,
+  }) : super(key: key);
 
   @override
   _FrameState createState() => _FrameState();
