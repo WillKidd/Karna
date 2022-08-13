@@ -1,7 +1,10 @@
 import 'package:app/model/system.dart';
 
+import 'workout.dart';
+
 class User {
   String name;
+  List<Workout> workouts = [];
   int age = 0;
   //all units are saved in metric system
   double weight = 0.0; //kg
@@ -54,4 +57,8 @@ class User {
         return height / 30.48;
     }
   }
+
+  addWorkout(Workout workout) => workouts.add(workout);
+  removeWorkout(Workout workout) => workouts.remove(workout);
+  getWorkouts() => workouts;
 }
