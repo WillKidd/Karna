@@ -7,14 +7,19 @@ import '../model/exercise.dart';
 import '../model/system.dart';
 import '../model/user.dart';
 import '../model/workout.dart';
+import '../view/workouts.dart';
 
 class Frame extends StatefulWidget {
-  const Frame({
+  Future<System?> system;
+  Future<User?> user;
+  IsarCollection<Workout> workouts;
+  IsarCollection<Exercise> exercises;
+  Frame({
     Key? key,
-    required Future<System?> system,
-    required Future<User?> user,
-    required IsarCollection<Workout> workouts,
-    required IsarCollection<Exercise> exercises,
+    required this.system,
+    required this.user,
+    required this.workouts,
+    required this.exercises,
   }) : super(key: key);
 
   @override
@@ -52,11 +57,7 @@ class _FrameState extends State<Frame> {
           case 0:
             ret = CupertinoTabView(
               builder: (context) {
-                return const CustomScrollView(slivers: <Widget>[
-                  CupertinoSliverNavigationBar(
-                    largeTitle: Text('Workouts'),
-                  ),
-                ]);
+                return WorkoutView(workouts: widget.workouts);
               },
             );
             break;
